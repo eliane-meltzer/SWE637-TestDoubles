@@ -36,31 +36,30 @@ public class ReservationServiceWithoutDependencyInjection {
         Max_availability--;
 
         double x = rank.getRank();
-        System.out.println("rank "+x);
-        //zone 1
+
+        //group 1
         if (x >=0.8){
             customer.setBoardingGroup(1);
         }
-        //zone 2
+        //group 2
         else if (x >= 0.6 && x <0.8){
             customer.setBoardingGroup(2);
         }
-        //zone 3
+        //group 3
         else if (x>= 0.4 && x <0.6){
             customer.setBoardingGroup(3);
         }
-        //zone 4
+        //group 4
         else if(x>= 0.2 && x <0.4){
             customer.setBoardingGroup(4);
         }
-        //zone 5
+        //group 5
         else{
             customer.setBoardingGroup(5);
         }
 
-        String output = String.format("%s,\n Your reservation has been made successfully. Your boarding group is: %d\n Your seat number is: %d", customer.getName(), customer.getBoardingGroup(),customer.getSeat());
+        String output = String.format("%s,\n Your reservation has been made successfully.\n Boarding group: %d\n Seat number: %d", customer.getName(), customer.getBoardingGroup(),customer.getSeat());
         System.out.println(output);
-
     }
 
     // used to set the preconditions before tests

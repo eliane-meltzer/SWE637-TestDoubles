@@ -8,12 +8,12 @@ public class ReservationServiceMock {
     // instance variables, constructors, other methods omitted for now
 
     // create a seam outside reserve
-    private RankingService rankingService;
+    private FakeRankingService rankingService;
     private int Max_availability;
     private int current_seat;
 
     public ReservationServiceMock() {
-        this.rankingService = new RankingService();
+        this.rankingService = new FakeRankingService();
         Max_availability = 600; // average number of seats in planes
         current_seat =0;
     }
@@ -29,10 +29,9 @@ public class ReservationServiceMock {
         customer.setSeat(current_seat+1);
         current_seat ++;
         Max_availability--;
-
         double x = rank.getRank();
-        System.out.println("rank "+x);
-        //zone 1
+
+        //group 1
         if (x >=0.8){
             customer.setBoardingGroup(1);
         }
@@ -40,22 +39,21 @@ public class ReservationServiceMock {
         else if (x >= 0.6 && x <0.8){
             customer.setBoardingGroup(2);
         }
-        //zone 3
+        //group 3
         else if (x>= 0.4 && x <0.6){
             customer.setBoardingGroup(3);
         }
-        //zone 4
+        //group 4
         else if(x>= 0.2 && x <0.4){
             customer.setBoardingGroup(4);
         }
-        //zone 5
+        //group 5
         else{
             customer.setBoardingGroup(5);
         }
 
-        String output = String.format("%s,\n Your reservation has been made successfully. Your boarding group is: %d\n Your seat number is: %d", customer.getName(), customer.getBoardingGroup(),customer.getSeat());
+        String output = String.format("%s,\n Your reservation has been made successfully.\n Boarding group: %d\n Seat number: %d", customer.getName(), customer.getBoardingGroup(),customer.getSeat());
         System.out.println(output);
-
     }
 
     // used to set the preconditions before tests
@@ -66,5 +64,11 @@ public class ReservationServiceMock {
     public void setCurrent_seat(int current_seat) {
         this.current_seat = current_seat;
     }
+
+    public int getMax_availability() {
+        return Max_availability;
+    }
+
+    public int getCurrent_seat() { return current_seat; }
 
 }

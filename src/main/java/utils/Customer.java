@@ -25,6 +25,8 @@ public class Customer {
         this.rank = new Rank(rank);
     }
 
+    public Rank getRank() { return rank; }
+
     public void setSeat(int seat) {
         this.seat = seat;
     }

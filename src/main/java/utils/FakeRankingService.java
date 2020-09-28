@@ -1,7 +1,8 @@
 package utils;
 
-import java.util.ArrayList;
-import java.util.Random;
+
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 
 /*  This is the test double class */
 public class FakeRankingService extends RankingService {
@@ -18,7 +19,6 @@ public class FakeRankingService extends RankingService {
 
         String level = customer.getMembership();
         if ("Platinum".equals(level)) {
-            System.out.println("rank given: "+ (4+availability)/600.0);
             customer.setRank((4+availability)/600.0);
             return new Rank((4+availability)/600.0);
         } else if ("Gold".equals(level)) {
@@ -33,6 +33,4 @@ public class FakeRankingService extends RankingService {
         }
 
     }
-
-
 }
