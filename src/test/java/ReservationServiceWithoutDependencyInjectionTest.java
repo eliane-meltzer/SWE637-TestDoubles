@@ -23,6 +23,5 @@ public class ReservationServiceWithoutDependencyInjectionTest {
         assertEquals(1, JaneDoe.getBoardingGroup());
         assertEquals(2, JaneDoe.getSeat());
     }
-
 }
 
